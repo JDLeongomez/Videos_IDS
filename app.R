@@ -10,7 +10,7 @@ Sys.setlocale("LC_TIME", "es_CO.UTF-8")
 options(shiny.maxRequestSize = 200*1024^2)
 
 ui <- page_fluid(
-  title = "Primeros Momentos",
+  title = "Te Hablo, Me Escuchas",
   
   useShinyjs(),
   
@@ -51,6 +51,7 @@ ui <- page_fluid(
           $.datepicker.setDefaults($.datepicker.regional['es']);
       });"
     )),
+    
     # Estilo de las cards
     tags$style(HTML("
       .card {
@@ -71,14 +72,45 @@ ui <- page_fluid(
     "))
   ),
   
-  # Header
+  ## Header con logo
   card(
-    card_header("Cómo hablan las mamás a sus bebés"),
     card_body(
+      div(
+        class = "container mb-3",
+        div(
+          class = "row align-items-center",
+          
+          # Columna izquierda: Logo y nombre de la app
+          div(
+            class = "col-md-8 col-sm-12 text-center text-md-start",
+            tags$img(src = "logo.svg", height = "200px", style = "margin-right: 10px;")
+          ),
+          
+          # Columna derecha: Información del investigador
+          div(
+            class = "col-md-4 col-sm-12 text-center text-md-end",
+            p(HTML(
+              "<a href='https://jdleongomez.info/es/' target='_blank'>
+          <img src='icon.png' height='18' style='vertical-align: middle; margin-right: 5px;'>
+        </a>
+        <a href='https://jdleongomez.info/es/' target='_blank' 
+          style='color: #4fc4b1; text-decoration: none; font-weight: bold;'>
+          Juan David Leongómez
+        </a>, PhD · 2025<br>
+        <a href='https://jdleongomez.info/es/team' target='_blank'>
+          <img src='Logo_EvoCo.svg' height='30' style='vertical-align: middle; margin: 3px;'>
+        </a>
+        <a href='https://investigaciones.unbosque.edu.co/codec' target='_blank'>
+          <img src='Logo_CODEC.svg' height='30' style='vertical-align: middle; margin: 3px;'>
+        </a><br>
+        Facultad de Psicología<br>Universidad El Bosque"
+            ),
+            style = "font-size: 0.85em; margin: 0;")
+          )
+        )
+      ),
+      hr(),
       HTML("
-      <div class='text-center mb-3'>
-        <p class='lead'>¡Gracias por ser parte de este proyecto tan especial!</p>
-      </div>
       <p>Estamos creando una colección de videos de mamás hablándole a sus bebés durante sus primeros meses de vida. Nuestro objetivo es entender cómo se comunican las mamás con sus bebés antes de que estos empiecen a hablar.</p>
       <p>Esto servirá como base para la planeación de un proyecto de investigación en sus fases preliminares.</p>
       <div class='row'>
@@ -86,17 +118,22 @@ ui <- page_fluid(
           <h5>En este formulario podrás:</h5>
           <ul>
             <li>Registrar la fecha de nacimiento de tu bebé.</li>
-            <li>Subir hasta 5 videos en los que estés hablándole directamente a tu bebé (idealmente entre los 0 y 11 meses de edad).</li>
+            <li>Subir hasta 10 videos en los que estés hablándole directamente a tu bebé (idealmente entre los 0 y 11 meses de edad).</li>
             <li>Indicar la fecha de grabación de cada video y agregar comentarios opcionales.</li>
           </ul>
+          ¡Gracias por ser parte de este proyecto tan especial!
         </div>
         <div class='col-md-6'>
-          <div class='alert alert-info'>
-            <strong>Privacidad:</strong> Solo tú podrás acceder y cargar tus archivos. Toda la información y los videos serán completamente confidenciales y se utilizarán exclusivamente con fines de investigación académica.
-          </div>
-          <p class='small'>Si tienes dudas, puedes escribir a Juan David Leongómez: <a href='mailto:jleongomez@unbosque.edu.co'>jleongomez@unbosque.edu.co</a></p>
-        </div>
-      </div>
+  <div class='alert alert-info'>
+    <strong>Privacidad:</strong> Solo tú podrás acceder y cargar tus archivos. 
+    Toda la información y los videos serán completamente confidenciales y 
+    se utilizarán exclusivamente con fines de investigación académica.
+  </div>
+  <p class='small'>
+  Si tienes dudas, puedes escribir a Juan David Leongómez: 
+  <a href='mailto:jleongomez@unbosque.edu.co'>jleongomez@unbosque.edu.co</a>
+</p>
+</div>
       ")
     )
   ),
@@ -271,7 +308,7 @@ server <- function(input, output, session) {
     videos <- datos_videos()
     n <- sum(videos$nombre_mama == nombre_mama_fijo() &
                videos$nombre_hijo == input$hijo_seleccionado)
-    paste0("Has subido ", n, " de 5 videos permitidos para ", input$hijo_seleccionado, ".")
+    paste0("Has subido ", n, " de 10 videos permitidos para ", input$hijo_seleccionado, ".")
   })
   
   # Subir video
@@ -290,8 +327,8 @@ server <- function(input, output, session) {
     videos <- datos_videos()
     videos_hijo <- videos[videos$nombre_mama == nombre_mama_fijo() &
                             videos$nombre_hijo == input$hijo_seleccionado, ]
-    if (nrow(videos_hijo) >= 5) {
-      showNotification("Ya has subido el máximo de 5 videos para este hijo/a", type="warning")
+    if (nrow(videos_hijo) >= 10) {
+      showNotification("Ya has subido el máximo de 10 videos para este hijo/a", type="warning")
       return()
     }
     
