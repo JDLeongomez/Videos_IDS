@@ -1,4 +1,6 @@
-![logo](https://raw.githubusercontent.com/JDLeongomez/Videos_IDS/refs/heads/master/www/logo_white.svg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JDLeongomez/Videos_IDS/refs/heads/master/www/logo_white.svg" alt="logo" height="200">
+</p>
 
 **Una aplicación Shiny para recolectar videos de mamás hablándole a sus bebés durante sus primeros meses de vida.**
 
