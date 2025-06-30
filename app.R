@@ -112,6 +112,7 @@ ui <- page_fluid(
       hr(),
       HTML("
       <p>Estamos creando una colección de videos de mamás hablándole a sus bebés durante sus primeros meses de vida. Nuestro objetivo es entender cómo se comunican las mamás con sus bebés antes de que estos empiecen a hablar.</p>
+      <p>No importa si tus hijos o hijas ya no son bebés. Lo importante es que lod videos que subas sean de cuando sí lo eran.</p>
       <p>Esto servirá como base para la planeación de un proyecto de investigación en sus fases preliminares.</p>
       <div class='row'>
         <div class='col-md-6'>
