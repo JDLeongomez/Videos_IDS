@@ -26,49 +26,44 @@ ui <- page_fluid(
   ),
   
   tags$head(
-    # Calendario en español
-    tags$script(HTML(
-      "$(function(){
-          $.datepicker.regional['es'] = {
-              closeText: 'Cerrar',
-              prevText: '< Ant',
-              nextText: 'Sig >',
-              currentText: 'Hoy',
-              monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
-              'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-              monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
-              'Jul','Ago','Sep','Oct','Nov','Dic'],
-              dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-              dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-              dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-              weekHeader: 'Sm',
-              dateFormat: 'yy-mm-dd',
-              firstDay: 1,
-              isRTL: false,
-              showMonthAfterYear: false,
-              yearSuffix: ''
-          };
-          $.datepicker.setDefaults($.datepicker.regional['es']);
-      });"
-    )),
-    
-    # Estilo de las cards
     tags$style(HTML("
-      .card {
-        border-radius: 16px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        margin-bottom: 20px;
-      }
-      .card-header {
-        background-color: #78c2ad;
-        color: white;
-        font-weight: bold;
-      }
-      .btn {
-        font-size: 16px;
-        padding: 10px 20px;
-        border-radius: 12px;
-      }
+  .btn-success {
+    background-color: #ff9f1c !important;
+    border-color: #ff9f1c !important;
+    color: white !important;
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .btn-success:hover {
+    background-color: #ff8500 !important;
+    border-color: #ff8500 !important;
+  }
+")),
+    tags$script(HTML("
+      $(function(){
+        $.datepicker.regional['es'] = {
+          closeText: 'Cerrar',
+          prevText: '< Ant',
+          nextText: 'Sig >',
+          currentText: 'Hoy',
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+          'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+          'Jul','Ago','Sep','Oct','Nov','Dic'],
+          dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+          dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+          weekHeader: 'Sm',
+          dateFormat: 'yy-mm-dd',
+          firstDay: 1,
+          isRTL: false,
+          showMonthAfterYear: false,
+          yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['es']);
+      });
     "))
   ),
   
@@ -112,51 +107,56 @@ ui <- page_fluid(
       hr(),
       HTML("
       <p>Estamos creando una colección de videos de mamás hablándole a sus bebés durante sus primeros meses de vida. Nuestro objetivo es entender cómo se comunican las mamás con sus bebés antes de que estos empiecen a hablar.</p>
-      <p>No importa si tus hijos o hijas ya no son bebés. Lo importante es que lod videos que subas sean de cuando sí lo eran.</p>
       <p>Esto servirá como base para la planeación de un proyecto de investigación en sus fases preliminares.</p>
+      <p>No importa si tus hijos o hijas ya no son bebés. Lo importante es que los videos que subas sean de cuando sí lo eran.</p>
       <div class='row'>
         <div class='col-md-6'>
           <h5>En este formulario podrás:</h5>
           <ul>
-            <li>Registrar la fecha de nacimiento de tu bebé.</li>
-            <li>Subir hasta 10 videos en los que estés hablándole directamente a tu bebé (idealmente entre los 0 y 11 meses de edad).</li>
+            <li>Registrar la fecha de nacimiento de tu(s) hijo(s) o hija(s) de quienes quieras subir videos.</li>
+            <li>Subir videos en los que estés hablándoles directamente cuando eran bebés (idealmente entre los 0 y 11 meses de edad).</li>
             <li>Indicar la fecha de grabación de cada video y agregar comentarios opcionales.</li>
           </ul>
           ¡Gracias por ser parte de este proyecto tan especial!
         </div>
         <div class='col-md-6'>
-  <div class='alert alert-info'>
-    <strong>Privacidad:</strong> Solo tú podrás acceder y cargar tus archivos. 
-    Toda la información y los videos serán completamente confidenciales y 
-    se utilizarán exclusivamente con fines de investigación académica.
-  </div>
-  <p class='small'>
-  Si tienes dudas, puedes escribir a Juan David Leongómez: 
-  <a href='mailto:jleongomez@unbosque.edu.co'>jleongomez@unbosque.edu.co</a>
-</p>
-</div>
+        <div class='alert alert-warning' role='alert'>
+        🧡 <strong>Importante:</strong> Puedes subir videos de uno o más de tus hijos o hijas, siempre que los videos sean de cuando tenían entre 0 y 11 meses. Por cada uno/a, puedes subir hasta 10 videos.
+        </div>
+        <div class='alert alert-info'>
+        <strong>Privacidad:</strong> Solo tú podrás acceder y cargar tus archivos. 
+        Toda la información y los videos serán completamente confidenciales y 
+        se utilizarán exclusivamente con fines de investigación académica.
+        </div>
+        <p class='small'>
+        Si tienes dudas, puedes escribir a Juan David Leongómez: 
+        <a href='mailto:jleongomez@unbosque.edu.co'>jleongomez@unbosque.edu.co</a>
+        </p>
+        </div>
       ")
     )
   ),
   
-  # Registro del nombre de la mamá
+  # Nombre de la mamá
   card(
     card_header("Identificación"),
     card_body(
-      textInput("nombre_mama", "Por favor ingresa tu nombre:", placeholder = "Tu nombre"),
-      actionButton("confirmar_mama", "Confirmar nombre", class = "btn-primary"),
+      textOutput("texto_mama"),
       hr(),
-      textOutput("texto_mama")
+      textInput("nombre_mama", "Por favor ingresa tu nombre:", placeholder = "Tu nombre"),
+      actionButton("confirmar_mama", "Confirmar nombre", class = "btn-primary")
     )
   ),
   
-  # Formulario hijos
+  # Información de hijos/as
   card(
     card_header("Registra la información de tu(s) hijo(s) o hija(s)"),
     card_body(
-      textInput("nombre_hijo", "Nombre del hijo/a:", placeholder = "Nombre del bebé"),
-      dateInput("fecha_nacimiento", "Fecha de nacimiento:", value = Sys.Date() - 365, max = Sys.Date()),
-      actionButton("agregar_hijo", "Agregar hijo/a", class = "btn-success")
+      fluidRow(
+        column(6, textInput("nombre_hijo", "Nombre del hijo/a:", placeholder = "Nombre (sin apellidos)")),
+        column(6, dateInput("fecha_nacimiento", "Fecha de nacimiento:", value = Sys.Date(), max = Sys.Date()))
+      ),
+      actionButton("agregar_hijo", "Agregar hijo/a", class = "btn-primary")
     )
   ),
   
@@ -172,11 +172,18 @@ ui <- page_fluid(
         dateInput("fecha_grabacion", "Fecha de grabación:", value = Sys.Date()),
         textAreaInput("comentarios", "Comentarios (opcional):", 
                       placeholder = "Añade comentarios sobre el video...", rows = 3),
-        actionButton("subir_video", "Subir Video", class = "btn-primary"),
+        actionButton("agregar_video", "Agregar video a la lista", class = "btn-primary"),
         hr(),
         textOutput("contador_videos")
       )
     )
+  ),
+  
+  # Recordatorio enviar respuestas
+  div(
+    class = "alert alert-warning",
+    HTML("<strong>⚠️ Recuerda:</strong> No olvides hacer clic en <strong>'Enviar respuestas'</strong> cuando termines de agregar todos los videos que quieras enviar (al final de la página). 
+       Solo así se guardarán tus datos y videos.")
   ),
   
   # Tablas
@@ -184,36 +191,60 @@ ui <- page_fluid(
     column(6,
            card(
              card_header("Hijos/as Registrados"),
-             card_body(DTOutput("tabla_hijos"))
+             card_body(
+               DTOutput("tabla_hijos")
+             ),
+             max_height = "200px"
            )
     ),
     column(6,
            card(
-             card_header("Videos Subidos"),
-             card_body(DTOutput("tabla_videos"))
+             card_header("Videos en Lista"),
+             card_body(
+               DTOutput("tabla_videos")
+             ),
+             max_height = "200px"
            )
     )
-  )
+  ),
+  
+  # Botón de enviar
+  card(
+    card_body(
+      div(
+        class = "text-center",
+        tags$h4("🧡 ¡Importante!"),
+        tags$p("Cuando hayas terminado de registrar a tus hijos/as y subir los videos, recuerda hacer clic en el botón:"),
+        actionButton("enviar_respuestas", "✅ Enviar respuestas", 
+                     class = "btn-success btn-lg"),
+        tags$p(tags$small("Hasta que no envíes, tus videos y datos no quedarán registrados definitivamente."))
+      )
+    )
+  ),
+  
+  tags$p(textOutput("texto_envio"), style = "color: green; font-weight: bold;")
 )
 
 server <- function(input, output, session) {
-  # Crear carpetas
   if (!dir.exists("uploaded_videos")) dir.create("uploaded_videos")
   if (!dir.exists("data")) dir.create("data")
   
   archivo_hijos <- "data/hijos.csv"
   archivo_videos <- "data/videos.csv"
   
+  # Cargar datos previos
   cargar_hijos <- function() {
     if (file.exists(archivo_hijos)) {
       df <- read.csv(archivo_hijos, stringsAsFactors = FALSE)
       df$fecha_nacimiento <- as.Date(df$fecha_nacimiento)
       df
     } else {
-      data.frame(nombre_mama=character(),
-                 nombre_hijo=character(),
-                 fecha_nacimiento=as.Date(character()),
-                 stringsAsFactors=FALSE)
+      data.frame(
+        nombre_mama = character(),
+        nombre_hijo = character(),
+        fecha_nacimiento = as.Date(character()),
+        stringsAsFactors = FALSE
+      )
     }
   }
   
@@ -221,25 +252,27 @@ server <- function(input, output, session) {
     if (file.exists(archivo_videos)) {
       df <- read.csv(archivo_videos, stringsAsFactors = FALSE)
       df$fecha_grabacion <- as.Date(df$fecha_grabacion)
-      df$fecha_subida <- as.POSIXct(df$fecha_subida)
+      df$fecha_subida <- as.POSIXct(df$fecha_subida, origin = "1970-01-01")
       df
     } else {
       data.frame(
-        nombre_mama=character(),
-        nombre_hijo=character(),
-        nombre_archivo=character(),
-        archivo_guardado=character(),
-        ruta_archivo=character(),
-        fecha_grabacion=as.Date(character()),
-        comentarios=character(),
-        fecha_subida=as.POSIXct(character()),
-        stringsAsFactors=FALSE)
+        nombre_mama = character(),
+        nombre_hijo = character(),
+        nombre_archivo = character(),
+        archivo_guardado = character(),
+        ruta_archivo = character(),
+        fecha_grabacion = as.Date(character()),
+        comentarios = character(),
+        fecha_subida = as.POSIXct(character()),
+        stringsAsFactors = FALSE
+      )
     }
   }
   
-  datos_hijos <- reactiveVal(cargar_hijos())
-  datos_videos <- reactiveVal(cargar_videos())
+  # Estados temporales
   nombre_mama_fijo <- reactiveVal(NULL)
+  datos_hijos_temp <- reactiveVal(data.frame())
+  datos_videos_temp <- reactiveVal(data.frame())
   
   # Confirmar nombre
   observeEvent(input$confirmar_mama, {
@@ -259,141 +292,164 @@ server <- function(input, output, session) {
   
   # Agregar hijo/a
   observeEvent(input$agregar_hijo, {
-    req(nombre_mama_fijo(), input$nombre_hijo, input$fecha_nacimiento)
+    req(input$nombre_hijo, input$fecha_nacimiento)
+    hijos <- datos_hijos_temp()
     
-    hijos <- datos_hijos()
-    ya_existe <- any(hijos$nombre_mama == nombre_mama_fijo() & 
-                       hijos$nombre_hijo == input$nombre_hijo)
+    nuevo <- data.frame(
+      nombre_mama = nombre_mama_fijo(),
+      nombre_hijo = input$nombre_hijo,
+      fecha_nacimiento = as.character(input$fecha_nacimiento),
+      stringsAsFactors = FALSE
+    )
     
-    if (ya_existe) {
-      showNotification("Este hijo/a ya está registrado", type="warning")
-    } else {
-      nuevo <- data.frame(
-        nombre_mama = nombre_mama_fijo(),
-        nombre_hijo = input$nombre_hijo,
-        fecha_nacimiento = input$fecha_nacimiento,
-        stringsAsFactors = FALSE
-      )
-      hijos <- rbind(hijos, nuevo)
-      datos_hijos(hijos)
-      write.csv(hijos, archivo_hijos, row.names = FALSE)
-      
-      updateTextInput(session, "nombre_hijo", value = "")
-      updateDateInput(session, "fecha_nacimiento", value = Sys.Date() - 365)
-      
-      showNotification("Hijo/a agregado exitosamente", type = "message")
-    }
+    hijos <- rbind(hijos, nuevo)
+    datos_hijos_temp(hijos)
+    
+    updateTextInput(session, "nombre_hijo", value = "")
+    updateDateInput(session, "fecha_nacimiento", value = Sys.Date())
   })
   
-  # Actualizar hijos
+  # Actualizar selectInput hijo
   observe({
-    req(nombre_mama_fijo())
-    hijos <- datos_hijos()
-    hijos_mama <- hijos[hijos$nombre_mama == nombre_mama_fijo(), ]
-    
-    choices <- setNames(hijos_mama$nombre_hijo, hijos_mama$nombre_hijo)
+    hijos <- datos_hijos_temp()
+    choices <- unique(hijos$nombre_hijo)
     updateSelectInput(session, "hijo_seleccionado", choices = choices)
   })
   
   # Mostrar seccion de videos si hay hijos
   output$hay_hijos <- reactive({
-    req(nombre_mama_fijo())
-    hijos <- datos_hijos()
-    sum(hijos$nombre_mama == nombre_mama_fijo()) > 0
+    nrow(datos_hijos_temp()) > 0
   })
   outputOptions(output, "hay_hijos", suspendWhenHidden = FALSE)
   
-  # Contador de videos
-  output$contador_videos <- renderText({
-    req(nombre_mama_fijo(), input$hijo_seleccionado)
-    videos <- datos_videos()
-    n <- sum(videos$nombre_mama == nombre_mama_fijo() &
-               videos$nombre_hijo == input$hijo_seleccionado)
-    paste0("Has subido ", n, " de 10 videos permitidos para ", input$hijo_seleccionado, ".")
-  })
-  
-  # Subir video
-  observeEvent(input$subir_video, {
+  # Agregar video (temporal)
+  observeEvent(input$agregar_video, {
     req(input$video_file, input$hijo_seleccionado, input$fecha_grabacion)
     
-    archivo <- input$video_file
-    extension <- tolower(file_ext(archivo$name))
-    extensiones_validas <- c("mp4", "avi", "mov", "wmv", "mkv", "flv", "webm", "m4v")
+    videos <- datos_videos_temp()
+    videos_hijo <- videos[videos$nombre_hijo == input$hijo_seleccionado, ]
     
-    if (!extension %in% extensiones_validas) {
-      showNotification("Por favor selecciona un archivo de video válido.", type="error")
-      return()
-    }
-    
-    videos <- datos_videos()
-    videos_hijo <- videos[videos$nombre_mama == nombre_mama_fijo() &
-                            videos$nombre_hijo == input$hijo_seleccionado, ]
     if (nrow(videos_hijo) >= 10) {
-      showNotification("Ya has subido el máximo de 10 videos para este hijo/a", type="warning")
+      showNotification("Ya has agregado 10 videos para este hijo/a", type = "warning")
       return()
     }
     
-    if (archivo$size > 200*1024^2) {
-      showNotification("Archivo demasiado grande (máximo 200MB)", type="error")
-      return()
-    }
-    
-    timestamp <- format(Sys.time(), "%Y%m%d_%H%M%S")
-    mama_clean <- gsub("[^A-Za-z0-9]", "_", nombre_mama_fijo())
-    hijo_clean <- gsub("[^A-Za-z0-9]", "_", input$hijo_seleccionado)
-    nombre_guardado <- paste0(mama_clean, "_", hijo_clean, "_", timestamp, ".", extension)
-    ruta_destino <- file.path("uploaded_videos", nombre_guardado)
-    
-    file.copy(archivo$datapath, ruta_destino)
-    
+    archivo <- input$video_file
     nuevo <- data.frame(
       nombre_mama = nombre_mama_fijo(),
       nombre_hijo = input$hijo_seleccionado,
       nombre_archivo = archivo$name,
-      archivo_guardado = nombre_guardado,
-      ruta_archivo = ruta_destino,
-      fecha_grabacion = input$fecha_grabacion,
-      comentarios = ifelse(is.null(input$comentarios) | input$comentarios == "", 
-                           "Sin comentarios", input$comentarios),
-      fecha_subida = Sys.time(),
+      datapath = archivo$datapath,
+      fecha_grabacion = as.character(input$fecha_grabacion),
+      comentarios = ifelse(input$comentarios == "", "Sin comentarios", input$comentarios),
       stringsAsFactors = FALSE
     )
     
     videos <- rbind(videos, nuevo)
-    datos_videos(videos)
-    write.csv(videos, archivo_videos, row.names = FALSE)
+    datos_videos_temp(videos)
     
     updateTextAreaInput(session, "comentarios", value = "")
     updateDateInput(session, "fecha_grabacion", value = Sys.Date())
+  })
+  
+  # Contador de videos
+  output$contador_videos <- renderText({
+    n <- sum(datos_videos_temp()$nombre_hijo == input$hijo_seleccionado)
+    paste0("Has agregado ", n, " de 10 videos permitidos para ", input$hijo_seleccionado, ".")
+  })
+  
+  # Enviar respuestas
+  observeEvent(input$enviar_respuestas, {
+    hijos_final <- datos_hijos_temp()
+    videos_final <- datos_videos_temp()
     
-    showNotification("Video subido exitosamente", type = "message")
+    if (nrow(hijos_final) == 0) {
+      showNotification("Debes registrar al menos un hijo/a antes de enviar.", type = "error")
+      return()
+    }
+    
+    # Guardar hijos
+    if (file.exists(archivo_hijos)) {
+      hijos_existentes <- read.csv(archivo_hijos, stringsAsFactors = FALSE)
+      hijos_final <- rbind(hijos_existentes, hijos_final)
+    }
+    write.csv(
+      transform(hijos_final, fecha_nacimiento = as.character(fecha_nacimiento)),
+      archivo_hijos,
+      row.names = FALSE
+    )
+    
+    # Guardar videos y mover archivos
+    if (nrow(videos_final) > 0) {
+      if (file.exists(archivo_videos)) {
+        videos_existentes <- read.csv(archivo_videos, stringsAsFactors = FALSE)
+      } else {
+        videos_existentes <- data.frame()
+      }
+      
+      for (i in seq_len(nrow(videos_final))) {
+        fila <- videos_final[i, ]
+        timestamp <- format(Sys.time(), "%Y%m%d_%H%M%S")
+        mama_clean <- gsub("[^A-Za-z0-9]", "_", fila$nombre_mama)
+        hijo_clean <- gsub("[^A-Za-z0-9]", "_", fila$nombre_hijo)
+        extension <- tolower(file_ext(fila$nombre_archivo))
+        nombre_guardado <- paste0(mama_clean, "_", hijo_clean, "_", timestamp, "_", i, ".", extension)
+        ruta_destino <- file.path("uploaded_videos", nombre_guardado)
+        
+        file.copy(fila$datapath, ruta_destino)
+        
+        fila_final <- data.frame(
+          nombre_mama = fila$nombre_mama,
+          nombre_hijo = fila$nombre_hijo,
+          nombre_archivo = fila$nombre_archivo,
+          archivo_guardado = nombre_guardado,
+          ruta_archivo = ruta_destino,
+          fecha_grabacion = fila$fecha_grabacion,
+          comentarios = fila$comentarios,
+          fecha_subida = as.character(Sys.time()),
+          stringsAsFactors = FALSE
+        )
+        videos_existentes <- rbind(videos_existentes, fila_final)
+      }
+      write.csv(
+        transform(videos_existentes,
+                  fecha_grabacion = as.character(fecha_grabacion),
+                  fecha_subida = as.character(fecha_subida)),
+        archivo_videos,
+        row.names = FALSE
+      )
+    }
+    
+    datos_hijos_temp(data.frame())
+    datos_videos_temp(data.frame())
+    nombre_mama_fijo(NULL)
+    enable("nombre_mama")
+    enable("confirmar_mama")
+    output$texto_envio <- renderText("✔️ Respuestas enviadas correctamente.")
   })
   
   # Tablas
   output$tabla_hijos <- renderDT({
-    hijos <- datos_hijos()
-    hijos <- hijos[hijos$nombre_mama == nombre_mama_fijo(), ]
-    if (nrow(hijos) > 0) {
-      hijos$edad_meses <- round(as.numeric(difftime(Sys.Date(), hijos$fecha_nacimiento, units = "days"))/30.44)
-      hijos <- hijos[, c("nombre_hijo", "fecha_nacimiento", "edad_meses")]
-      colnames(hijos) <- c("Hijo/a", "Fecha de Nacimiento", "Edad (meses)")
-    }
-    
-    datatable(hijos, options=list(dom='t', paging=FALSE, searching=FALSE), rownames=FALSE)
+    datatable(datos_hijos_temp(), options = list(dom = 't', paging = FALSE), rownames = FALSE)
   })
   
   output$tabla_videos <- renderDT({
-    videos <- datos_videos()
-    videos <- videos[videos$nombre_mama == nombre_mama_fijo(), ]
-    if (nrow(videos) > 0) {
-      videos_mostrar <- videos[, c("nombre_hijo", "nombre_archivo", "fecha_grabacion", "comentarios", "fecha_subida")]
-      colnames(videos_mostrar) <- c("Hijo/a", "Archivo", "Fecha de Grabación", "Comentarios", "Fecha de Subida")
-      videos_mostrar$`Fecha de Subida` <- format(videos_mostrar$`Fecha de Subida`, "%Y-%m-%d %H:%M")
+    datos <- datos_videos_temp()
+    if (nrow(datos) == 0) {
+      datatable(
+        data.frame(Mensaje = "Por favor agrega videos."),
+        options = list(dom = 't', paging = FALSE),
+        rownames = FALSE,
+        colnames = ""
+      )
     } else {
-      videos_mostrar <- videos
+      datatable(
+        datos[, c("nombre_hijo", "nombre_archivo", "fecha_grabacion", "comentarios")],
+        options = list(dom = 't', paging = FALSE),
+        rownames = FALSE,
+        colnames = c("Hijo/a", "Archivo", "Fecha de Grabación", "Comentarios")
+      )
     }
-    
-    datatable(videos_mostrar, options=list(dom='t', paging=FALSE, searching=FALSE, scrollX=TRUE), rownames=FALSE)
   })
 }
 
